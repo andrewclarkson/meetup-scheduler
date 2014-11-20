@@ -1,0 +1,22 @@
+application: meetup-scheduler
+runtime: python27
+api_version: 1
+threadsafe: true
+
+libraries:
+- name: jinja2
+  version: "latest"
+- name: markupsafe
+  version: "latest"
+
+handlers:
+- url: /css
+  static_dir: assets/build/css
+- url: /js
+  static_dir: assets/build/js
+- url: /fonts
+  static_dir: assets/build/fonts
+- url: /img
+  static_dir: assets/build/img
+- url: /.*
+  script: server.app 
