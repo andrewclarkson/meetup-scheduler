@@ -1,5 +1,5 @@
 from urllib import urlencode
-from flask import url_for
+from flask import url_for, render_template, request
 
 from app import app
 
@@ -17,8 +17,19 @@ def login():
     })
 
     url = app.config['AUTHORIZE_URL'] + "?" + params
-    return url
+    return render_template("login.html", url=url)
     
 @app.route("/auth")
 def auth():
-    return "None"
+    try:
+        code = request.args['code']
+        state = request.args['state']
+    except KeyError:
+        return "FAIL"
+
+    error = request.args.get('error', False)
+
+    if error:
+        return error
+
+    return code + " " + state
