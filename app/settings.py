@@ -3,7 +3,7 @@ import os
 DEBUG = True
 AUTHORIZE_URL = 'https://secure.meetup.com/oauth2/authorize'
 
-SERVER_NAME = os.environ['HTTP_HOST']
+#SERVER_NAME = os.environ['HTTP_HOST']
 
 DEVELOPMENT = os.environ['SERVER_SOFTWARE'].startswith("Development")
 PRODUCTION = not DEVELOPMENT
